@@ -1,7 +1,5 @@
 function _checkAllSquareForDraw(){
-  if(audio.ended){
-    clearInterval(intervalMusic);
-  }
+
   _checkFirstTrack();
   _checkSecondTrack();
   _checkThirdTrack();
@@ -14,82 +12,74 @@ var matchedThird = false;
 var matchedFourth = false;
 
 function _checkFirstTrack(){
-  if (!matchedFirst && _inTime(recordsRedeables[0][0])){
-    _highligthSquare(0);
+  if (!matchedFirst && _inTimeFirstAndThird(recordsRedeables[0][0]) && audioMutedBottom.currentTime != 0){
+    _pushSquare(0);
     matchedFirst = true;
   }
-  if (_finished(recordsRedeables[0][0])){
-    _stopHighlightSquare(0);
+  if (_finishedFirstAndThird(recordsRedeables[0][0])){
     _removeFromTrack(0);
     matchedFirst = false;
   }
 }
 
 function _checkSecondTrack(){
-  if (!matchedSecond && _inTime(recordsRedeables[1][0])){
-    _highligthSquare(1);
+  if (!matchedSecond && _inTimeSecondAndFourth(recordsRedeables[1][0]) && audioMutedRight.currentTime != 0){
+    _pushSquare(1);
     matchedSecond = true;
 
   }
-  if (_finished(recordsRedeables[1][0])){
-    _stopHighlightSquare(1);
+  if (_finishedSecondAndForth(recordsRedeables[1][0])){
     _removeFromTrack(1);
     matchedSecond = false;
   }
 }
 
 function _checkThirdTrack(){
-  if (!matchedThird  && _inTime(recordsRedeables[2][0])){
-    _highligthSquare(2);
+  if (!matchedThird  && _inTimeFirstAndThird(recordsRedeables[2][0]) && audioMutedBottom.currentTime !== 0){
+    _pushSquare(2);
     matchedThird = true;
   }
-  if (_finished(recordsRedeables[2][0])){
-    _stopHighlightSquare(2);
+  if (_finishedFirstAndThird(recordsRedeables[2][0])){
     _removeFromTrack(2);
     matchedThird = false;
   }
 }
 
 function _checkFourthTrack(){
-  if (!matchedFourth && _inTime(recordsRedeables[3][0])){
-    _highligthSquare(3);
+  if (!matchedFourth && _inTimeSecondAndFourth(recordsRedeables[3][0]) && audioMutedRight.currentTime !== 0){
+    _pushSquare(3);
     matchedFourth = true;
   }
-  if (_finished(recordsRedeables[3][0])){
-    _stopHighlightSquare(3);
+  if (_finishedSecondAndForth(recordsRedeables[3][0])){
     _removeFromTrack(3);
     matchedFourth = false;
   }
 }
 
-
 function _removeFromTrack(track){
   recordsRedeables[track].splice(0,1);
 }
 
-function _finished(timing){
-  return timing.getEnd().toFixed(2) === audio.currentTime.toFixed(2);
+function _finishedFirstAndThird(timing){
+  tim = timing || new Timing();
+  return tim.getEnd().toFixed(2) === audioMutedBottom.currentTime.toFixed(2);
 }
 
-function _inTime(timing){
-  return timing.getStart().toFixed(2) === audio.currentTime.toFixed(2);
+function _finishedSecondAndForth(timing){
+  tim = timing || new Timing();
+  return tim.getEnd().toFixed(2) === audioMutedRight.currentTime.toFixed(2);
+}
+
+function _inTimeFirstAndThird(timing){
+  tim = timing || new Timing();
+  return tim.getStart().toFixed(2) === audioMutedBottom.currentTime.toFixed(2);
+}
+
+function _inTimeSecondAndFourth(timing) {
+  tim = timing || new Timing();
+  return tim.getStart().toFixed(2) === audioMutedRight.currentTime.toFixed(2);
 }
 
 function _pushSquare(track) {
-  clearCanvas();
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    squaresForHit.getSquares()[track].changeColor("rgba(0, 128, 255, 1");
-        blackCircle.draw();
-}
-
-function _stopHighlightSquare(track) {
-    clearCanvas();
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    //squaresForHit.draw();
-    squaresForHit.getSquares()[track].changeColor("rgba(0, 128, 255, 0");
-    blackCircle.draw();
-    //squaresForHit.getSquares()[track].changeColor("rgba(0, 128, 255, 0");
+  squaresAnimated.pushAtTrack(track);
 }

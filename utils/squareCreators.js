@@ -16,7 +16,7 @@ function _getPositionForTrack(track) {
     case TRACK.up:
       return {
         x: currentDimensions.width / 2 - halfWidth,
-        y: 0
+        y: 0 - (halfWidth * 2)
       };
     case TRACK.right:
       return {
@@ -30,7 +30,7 @@ function _getPositionForTrack(track) {
       };
     case TRACK.left:
       return {
-        x: 0,
+        x: 0 - (halfWidth * 2),
         y: currentDimensions.height / 2 - halfWidth
       };
     default:
@@ -42,4 +42,4 @@ function _createSquare(pos, size, col, track) {
   return new Square(pos.x, pos.y, size.width, size.height, col , track);
 }
 
-function _getRandomNumber() {return Math.floor((Math.random() * MAX_TRACKS) + 1);}
+function _getRandomNumber() {return Math.floor((Math.random() * MAX_TRACKS));}

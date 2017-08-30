@@ -10,7 +10,7 @@ function readText(filePath) {
           forCheck = e.target.result;
           recordsRedeables = _convertToRedeable(output);
           recordsRedeables = _createObjects(recordsRedeables);
-          //animate();
+
           playMusic();
       };
       reader.readAsText(filePath.files[0]);

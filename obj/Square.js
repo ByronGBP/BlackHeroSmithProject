@@ -1,9 +1,9 @@
 var GAP = 7;
 var TRACK = {
-  up: 1,
-  right: 2,
-  bottom: 3,
-  left: 4
+  up: 0,
+  right: 1,
+  bottom: 2,
+  left: 3
 };
 
 function Square(x, y, w, h, c, t) {

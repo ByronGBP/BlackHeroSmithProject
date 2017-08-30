@@ -2,6 +2,7 @@
 function initSetup() {
   _initCircle();
   _initSquaresForHits();
+  _initSquares();
   _getDelayTime();
 
 }
@@ -18,8 +19,9 @@ function _initCircle() {
 
 function _initSquaresForHits() {
   squaresForHit = new SquaresForHit();
+  squaresForHit.draw();
 }
 
-function _initSquares () {
-  squares = new Squares();
+function _initSquares() {
+  squaresAnimated = new Squares();
 }

@@ -1,6 +1,6 @@
 function _checkHits(key){
   var track = _getTrack(key);
-  var squars = squares.getSquares()[track];
+  var squars = squaresAnimated.getSquares()[track];
   var squareToCollision = squaresForHit.getSquares()[track];
 
   squars.every(function(square, index) {
@@ -13,8 +13,22 @@ function _checkHits(key){
   });
 }
 
+function _getTrack(key) {
+  switch(key) {
+    case KEYBOARD_CODE.arrowLeft:
+      return 3;
+    case KEYBOARD_CODE.arrowUp:
+      return 0;
+    case KEYBOARD_CODE.arrowRight:
+      return 1;
+    case KEYBOARD_CODE.arrowBottom:
+      return 2;
+    default:
+      console.log("Invalid key");
+  }
+}
+
 function _collision(obj1, obj2, track) {
-  track += 1;
   switch(track) {
     case TRACK.up:
       return _checkColistionUp(obj1, obj2);

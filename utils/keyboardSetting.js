@@ -65,27 +65,12 @@ function setupKeyboard2() {
   });
 }
 
-function _getTrack(key) {
-  switch(key) {
-    case KEYBOARD_CODE.arrowLeft:
-      return 3;
-    case KEYBOARD_CODE.arrowUp:
-      return 0;
-    case KEYBOARD_CODE.arrowRight:
-      return 1;
-    case KEYBOARD_CODE.arrowBottom:
-      return 2;
-    default:
-      console.log("Invalid key");
-  }
-}
-
 function _highligthSquare(key) {
     var track = _getTrack(key);
-    squaresForHit.getSquares()[track].changeColor("rgba(50, 200, 0, 1");
+    squaresForHit.getSquares()[track].changeColor("rgba(0, 128, 255, 1");
 }
 
 function _stopHighlightSquare(key) {
     var track = _getTrack(key);
-    squaresForHit.getSquares()[track].changeColor("rgba(0, 200, 0, 0.5");
+    squaresForHit.getSquares()[track].changeColor("rgba(0, 128, 255, 0.5");
 }

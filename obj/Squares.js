@@ -8,7 +8,7 @@ function Squares(bunch) {
 
   return {
     updateSquares: function() {
-      ctx.clearRect(0,0,currentDimensions.width,currentDimensions.height);
+      clearCanvas();
       squares = _updateSquares(squares);
     },
     pushRandom: function() {
@@ -16,6 +16,9 @@ function Squares(bunch) {
     },
     getSquares: function() {
       return squares;
+    },
+    pushAtTrack: function(track){
+      squares = _pushAtTrack(track,squares);
     }
   };
 }
@@ -24,7 +27,14 @@ function _pushRandomSquare(squares) {
   var track = _getRandomNumber();
   var square = _createSquareAtTrack(track);
 
-  squares[track - 1].push(square);
+  squares[track].push(square);
+  return squares;
+}
+
+function _pushAtTrack(track, squares){
+  square = _createSquareAtTrack(track);
+  squares[track].push(square);
+
   return squares;
 }
 

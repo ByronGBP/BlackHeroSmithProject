@@ -22,7 +22,7 @@ function _renderSquares(squares) {
 
 function _createFourSquares(col) {
   positions = _calculatePositions();
-  return [_createSquareAtTrack(1,positions[0],col),_createSquareAtTrack(2, positions[1], col),_createSquareAtTrack(3,positions[2],  col),_createSquareAtTrack(4, positions[3],col)];
+  return [_createSquareAtTrack(0,positions[0],col),_createSquareAtTrack(1, positions[1], col),_createSquareAtTrack(2,positions[2],  col),_createSquareAtTrack(3, positions[3],col)];
 }
 
 function _calculatePositions() {

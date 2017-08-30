@@ -3,7 +3,7 @@ var timeBottom;
 
 function MockSquares() {
   var timeToHit;
-  var squares = [_createSquareAtTrack(2), _createSquareAtTrack(3)];
+  var squares = [_createSquareAtTrack(1), _createSquareAtTrack(2)];
   return {
     getTimeToHit: function() {
       _calculateTime();

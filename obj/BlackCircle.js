@@ -24,8 +24,8 @@ function BlackCircle() {
 function _drawCircle(pos, radius) {
   ctx.beginPath();
   ctx.arc(pos.x, pos.y, radius, 0, 2 * PI);
-  color = _randomColor();
-  ctx.fillStyle = color;
+  //color = _randomColor();
+  ctx.fillStyle = "black";
   ctx.fill();
   ctx.lineWidth = 1;
   ctx.strokeStyle = 'rgba(153,0,76,0.5)';

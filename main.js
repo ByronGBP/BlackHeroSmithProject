@@ -8,7 +8,7 @@ var currentDimensions;
 
 var squaresForHit;
 var blackCircle;
-var squares;
+var squaresAnimated;
 
 window.onload = function() {
   ctx.canvas.width  = window.innerWidth;
@@ -23,26 +23,19 @@ window.onload = function() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   initSetup();
-
   setupKeyboard();
 };
 var intervalMusic;
 function animate() {
-  _checkAllSquareForDraw();
   clearCanvas();
+  squaresAnimated.updateSquares();
   blackCircle.draw();
   squaresForHit.draw();
-  squares.update();
   requestAnimationFrame(animate);
 }
 
 function playMusic(){
-  audioListen.play();
-  intervalMusic = setInterval(function(){ _checkAllSquare();}, 1);
-}
-
-if(audioListen.ended){
-
-  clearInterval(intervalMusic);
-
+  _startAudiosWithDelay();
+  intervalMusic = setInterval(function(){ _checkAllSquareForDraw();}, 1);
+  animate();
 }

@@ -1,8 +1,8 @@
 
 function Timing(s, e, t) {
-  var start = s;
-  var end = e;
-  var track = t;
+  var start = s || 0;
+  var end = e || 0;
+  var track = t || null;
   return {
     getParameters: function() {
       return [start, end, track];
