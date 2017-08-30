@@ -9,6 +9,7 @@ function BlackCircle() {
     draw: function() {
       position = _getScreenMiddle();
       radius = _getRadius();
+
       _drawCircle(position, radius);
     },
     getPosition: function() {
@@ -23,11 +24,21 @@ function BlackCircle() {
 function _drawCircle(pos, radius) {
   ctx.beginPath();
   ctx.arc(pos.x, pos.y, radius, 0, 2 * PI);
-  ctx.fillStyle = 'rgba(153,0,153,0.5)';
+  color = _randomColor();
+  ctx.fillStyle = color;
   ctx.fill();
   ctx.lineWidth = 1;
   ctx.strokeStyle = 'rgba(153,0,76,0.5)';
   ctx.stroke();
+}
+
+function _randomColor() {
+  var random = Math.random();
+  if (random > 0.5){
+    return "rgba(51,153,255,1)";
+  }
+  return "rgba(255,0,0,1)";
+
 }
 
 function _getScreenMiddle() {

@@ -7,32 +7,32 @@ var KEYBOARD_CODE = {
 
 function setupKeyboard() {
   $(document).on("keydown", function(e) {
-      if (e.which === KEYBOARD_CODE.arrowLeft) {
-        e.preventDefault();
+    if (e.which === KEYBOARD_CODE.arrowLeft) {
+      e.preventDefault();
 
-        _highligthSquare(KEYBOARD_CODE.arrowLeft);
+      _highligthSquare(KEYBOARD_CODE.arrowLeft);
+      _checkHits(KEYBOARD_CODE.arrowLeft);
+    }
 
-      }
+    else if (e.which === KEYBOARD_CODE.arrowUp) {
+      e.preventDefault();
 
-      else if (e.which === KEYBOARD_CODE.arrowUp) {
-        e.preventDefault();
+      _highligthSquare(KEYBOARD_CODE.arrowUp);
+      _checkHits(KEYBOARD_CODE.arrowUp);
+    }
 
-        _highligthSquare(KEYBOARD_CODE.arrowUp);
+    else if (e.which === KEYBOARD_CODE.arrowRight) {
+      e.preventDefault();
 
-      }
+      _highligthSquare(KEYBOARD_CODE.arrowRight);
+      _checkHits(KEYBOARD_CODE.arrowRight);
+    }
+    else if (e.which === KEYBOARD_CODE.arrowBottom) {
+      e.preventDefault();
 
-      else if (e.which === KEYBOARD_CODE.arrowRight) {
-        e.preventDefault();
-
-        _highligthSquare(KEYBOARD_CODE.arrowRight);
-
-      }
-      else if (e.which === KEYBOARD_CODE.arrowBottom) {
-        e.preventDefault();
-
-        _highligthSquare(KEYBOARD_CODE.arrowBottom);
-
-      }
+      _highligthSquare(KEYBOARD_CODE.arrowBottom);
+      _checkHits(KEYBOARD_CODE.arrowBottom);
+    }
   });
   //TODO: refactor!
   setupKeyboard2();
@@ -80,12 +80,12 @@ function _getTrack(key) {
   }
 }
 
-// function _highligthSquare(key) {
-//     var track = _getTrack(key);
-//     squaresForHit.getSquares()[track].changeColor("rgba(50, 200, 0, 1");
-// }
-//
-// function _stopHighlightSquare(key) {
-//     var track = _getTrack(key);
-//     squaresForHit.getSquares()[track].changeColor("rgba(0, 200, 0, 0.5");
-// }
+function _highligthSquare(key) {
+    var track = _getTrack(key);
+    squaresForHit.getSquares()[track].changeColor("rgba(50, 200, 0, 1");
+}
+
+function _stopHighlightSquare(key) {
+    var track = _getTrack(key);
+    squaresForHit.getSquares()[track].changeColor("rgba(0, 200, 0, 0.5");
+}

@@ -1,4 +1,6 @@
-var audio = new Audio("src/music.mp3");
+var audioListen = new Audio("src/music.mp3");
+var audioMutedRight = new Audio("src/music.mp3");
+var audioMutedBottom = new Audio("src/music.mp3");
 
 var canvas = document.getElementsByClassName('canvas')[0];
 var ctx = canvas.getContext('2d');
@@ -6,6 +8,7 @@ var currentDimensions;
 
 var squaresForHit;
 var blackCircle;
+var squares;
 
 window.onload = function() {
   ctx.canvas.width  = window.innerWidth;
@@ -20,23 +23,25 @@ window.onload = function() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   initSetup();
-  //setupKeyboard();
+
+  setupKeyboard();
 };
 var intervalMusic;
 function animate() {
-  _checkAllSquare();
-  ctx.clearRect(0,0,currentDimensions.width,currentDimensions.height);
+  _checkAllSquareForDraw();
+  clearCanvas();
   blackCircle.draw();
   squaresForHit.draw();
+  squares.update();
   requestAnimationFrame(animate);
 }
 
 function playMusic(){
-  audio.play();
+  audioListen.play();
   intervalMusic = setInterval(function(){ _checkAllSquare();}, 1);
 }
 
-if(audio.ended){
+if(audioListen.ended){
 
   clearInterval(intervalMusic);
 

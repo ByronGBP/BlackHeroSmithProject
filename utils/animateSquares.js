@@ -1,9 +1,7 @@
-
-function _checkAllSquare(){
+function _checkAllSquareForDraw(){
   if(audio.ended){
     clearInterval(intervalMusic);
   }
-
   _checkFirstTrack();
   _checkSecondTrack();
   _checkThirdTrack();
@@ -77,8 +75,8 @@ function _inTime(timing){
   return timing.getStart().toFixed(2) === audio.currentTime.toFixed(2);
 }
 
-function _highligthSquare(track) {
-  ctx.clearRect(0,0,currentDimensions.width,currentDimensions.height);
+function _pushSquare(track) {
+  clearCanvas();
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -87,7 +85,7 @@ function _highligthSquare(track) {
 }
 
 function _stopHighlightSquare(track) {
-    ctx.clearRect(0,0,currentDimensions.width,currentDimensions.height);
+    clearCanvas();
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     //squaresForHit.draw();

@@ -41,7 +41,10 @@ function Square(x, y, w, h, c, t) {
     },
     getColor: function() {
       return color;
-    }
+    },
+    _updateMock: function(gap) {
+      position = _update(position, track, gap);
+    },
   };
 }
 
